@@ -1,6 +1,7 @@
-# learning_go
+Learning Go
+------
 
-learning go!
+>   learning go!
 
 ## Resource
 
