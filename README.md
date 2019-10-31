@@ -12,4 +12,5 @@ Learning Go
 - [Awesome Go](https://github.com/avelino/awesome-go)
 - [Go资源精选中文版(拒绝大杂烩)](https://github.com/chai2010/awesome-go-zh)
 - https://github.com/hyper0x/awesome-go-China/blob/master/zh_CN/README.md
+- [为互联网IT人打造的中文版awesome-go](https://github.com/hackstoic/golang-open-source-projects)
 
