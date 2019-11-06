@@ -43,16 +43,38 @@ func main() {
 	
 	// grouping route
 	
-	users := app.Party("/users", handler)
+	users := app.Party("/users", myAuthMiddlewareHandler)
 
 	// http://localhost:8080/users/42/profile
-	users.Get("/{id:uint64}/profile", handler)
+	users.Get("/{id:uint64}/profile", profileHandler)
 	// http://localhost:8080/users/messages/1
-	users.Get("/messages/{id:uint64}", handler)
+	users.Get("/messages/{id:uint64}", messageHandler)
+	
+	app.PartyFunc("/users", func(users iris.Party) {
+		users.Use(myAuthMiddlewareHandler)
+		
+		// http://localhost:8080/users/42/profile
+		users.Get("/{id:uint64}/profile", profileHandler)
+		// http://localhost:8080/users/messages/1
+		users.Get("/messages/{id:uint64}", messageHandler)
+		
+	})
 	
 	app.Run(iris.Addr(":8080"))
 }
 
 func handler(ctx iris.Context){
 	ctx.Writef("Hello from method: %s and path: %s\n", ctx.Method(), ctx.Path())
+}
+
+func myAuthMiddlewareHandler(ctx iris.Context) {
+	
+}
+
+func profileHandler(ctx iris.Context) {
+	
+}
+
+func messageHandler(ctx iris.Context) {
+	
 }
