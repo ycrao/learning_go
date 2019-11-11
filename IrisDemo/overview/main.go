@@ -26,13 +26,13 @@ func main() {
 	// Register custom handler for specific http errors.
 	app.OnErrorCode(iris.StatusInternalServerError, func(ctx iris.Context) {
 		// .Values are used to communicate between handlers, middleware.
-		errMessage := ctx.Values().GetString("error")
+		errMessage := ctx.Values().GetString("errors")
 		if errMessage != "" {
-			ctx.Writef("Internal server error: %s", errMessage)
+			ctx.Writef("Internal server errors: %s", errMessage)
 			return
 		}
 
-		ctx.Writef("(Unexpected) internal server error")
+		ctx.Writef("(Unexpected) internal server errors")
 	})
 
 	app.Use(func(ctx iris.Context) {
@@ -115,7 +115,7 @@ func createUser(ctx iris.Context) {
 	var user User
 	err := ctx.ReadForm(&user)
 	if err != nil {
-		ctx.Values().Set("error", "creating user, read and parse form failed. "+err.Error())
+		ctx.Values().Set("errors", "creating user, read and parse form failed. "+err.Error())
 		ctx.StatusCode(iris.StatusInternalServerError)
 		return
 	}
