@@ -4,10 +4,10 @@ import "github.com/kataras/iris/v12"
 
 func main() {
 	app := iris.New()
-	config := iris.WithConfiguration(iris.Configuration {
-		DisableStartupLog: true,
+	config := iris.WithConfiguration(iris.Configuration{
+		DisableStartupLog:   true,
 		EnableOptimizations: true,
-		Charset:"UTF-8",
+		Charset:             "UTF-8",
 	})
 
 	// config := iris.WithConfiguration(iris.YAML("./iris.yml"))
@@ -22,6 +22,6 @@ func main() {
 		iris.WithOtherValue("ServerName", "my amazing iris server"),
 		iris.WithOtherValue("ServerOwner", "admin@example.com"),
 	)
-	
+
 	app.Run(iris.Addr(":8080"), config)
 }
