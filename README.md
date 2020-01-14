@@ -1,7 +1,7 @@
 Learning Go
 ------
 
->   learning go!
+>   learning go! 示例代码比较杂乱、随意。
 
 ## Resource
 
